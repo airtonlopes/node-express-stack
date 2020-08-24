@@ -3,6 +3,14 @@ const expressHandlebars = require('express-handlebars');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const fortunes = [
+    'Conquer your fears or they will coquer you.',
+    'Rivers need springs.',
+    'Do not fear what what you don\'t know.',
+    'You will have a pleasant surprise.',
+    'Whenever possible, keep it simple.',
+];
+
 app.use(express.static(__dirname + '/public'));
 
 // Configura o view engine Handlebars
@@ -14,7 +22,10 @@ app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => res.render('home'));
 
-app.get('/about', (req, res) => res.render('about'));
+app.get('/about', (req, res) => {
+    const fortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+    res.render('about', { fortune });
+});
 
 // Página 404 personalizada
 app.use((req, res) => {
