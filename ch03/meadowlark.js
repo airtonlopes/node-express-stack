@@ -10,30 +10,22 @@ app.engine('handlebars', expressHandlebars({
 
 app.set('view engine', 'handlebars');
 
-app.get('/', (req, res) => {
-    res.type('text/plain');
-    res.send('Meadowlark Travel');
-});
+app.get('/', (req, res) => res.render('home'));
 
-app.get('/about', (req, res) => {
-    res.type('text/plain');
-    res.send('About Meadowlar Travel');
-});
+app.get('/about', (req, res) => res.render('about'));
 
 // Página 404 personalizada
 app.use((req, res) => {
-    res.type('text/plain');
     res.status(404);
-    res.send('404 - Not Found');
+    res.render('404');
 });
 
 
 // Página 500 personalizada
 app.use((err, req, res, next) => {
     console.error(err.message);
-    res.type('text/plain');
     res.status(500);
-    res.send('500 - Server Error');
+    res.render('500');
 });
 
 app.listen(port, () => console.log(`Express started on http://localost:${port};`
