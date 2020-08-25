@@ -2,14 +2,7 @@ const express = require('express');
 const expressHandlebars = require('express-handlebars');
 const app = express();
 const port = process.env.PORT || 3000;
-
-const fortunes = [
-    'Conquer your fears or they will coquer you.',
-    'Rivers need springs.',
-    'Do not fear what what you don\'t know.',
-    'You will have a pleasant surprise.',
-    'Whenever possible, keep it simple.',
-];
+const fortune = require('./lib/fortune');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -23,8 +16,7 @@ app.set('view engine', 'handlebars');
 app.get('/', (req, res) => res.render('home'));
 
 app.get('/about', (req, res) => {
-    const fortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-    res.render('about', { fortune });
+    res.render('about', { fortune: fortune.getFortune() });
 });
 
 // Página 404 personalizada
