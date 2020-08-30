@@ -31,7 +31,7 @@ test('500 handlers renders', () => {
     const req = {};
     const res = { render: jest.fn() };
     const nxt = jest.fn();
-    handlers.serverError(req, res, err, nxt);
+    handlers.serverError(err, req, res, nxt);
     expect(res.render.mock.calls.length).toBe(1);
     expect(res.render.mock.calls[0][0]).toBe('500');
 });
