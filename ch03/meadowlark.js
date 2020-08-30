@@ -27,5 +27,8 @@ app.use(handlers.notFound);
 // Página 500 personalizada
 app.use(handlers.serverError);
 
-app.listen(port, () => console.log(`Express started on http://localost:${port};`
-    + `press Ctrl - C to terminate.`));
+if (require.main === module)
+    app.listen(port, () => console.log(`Express started on http://localost:${port};`
+        + `press Ctrl - C to terminate.`));
+else
+    module.exports = app;
