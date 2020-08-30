@@ -2,10 +2,11 @@
   "name": "ch03",
   "version": "1.0.0",
   "description": "",
-  "main": "00-meadowlark.js",
+  "main": "meadowlark.js",
   "scripts": {
     "test": "jest --runInBand",
-    "dev": "node meadowlark.js"
+    "dev": "node meadowlark.js",
+    "lint": "eslint meadowlark.js lib"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "express-handlebars": "^5.1.0"
   },
   "devDependencies": {
+    "eslint": "^7.7.0",
     "jest": "^26.4.2",
     "portfinder": "^1.0.28",
     "puppeteer": "^5.2.1"
